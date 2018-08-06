@@ -1,0 +1,45 @@
+import sqlite3
+baglanti = sqlite3.connect('hi.db')
+if(baglanti):
+    print('Baglanti Başarılı!')
+else:
+    print('Bağlantı Başarısız!')
+veritabani_sec = baglanti.cursor()
+
+username = None
+
+def check(): #username, password):
+    global username
+    print("Kullanıcı adı:")
+    name = input()
+    cursor = veritabani_sec.execute("SELECT COUNT (ad) FROM sincap WHERE ad=?;".format(name) ,(name,))
+    if ('username == name'):
+        print("kullanıcı bulundu")
+    else:
+        print("Yeniden deneyin")
+    print("Parola girin:")
+    paswd= input()
+    cursor = veritabani_sec.execute("SELECT COUNT (parola) FROM sincap WHERE parola=?;".format(paswd) ,(paswd,))
+    if ('paswd == paswd'):
+        print("parola doğru")
+    else:
+        print("Yeniden deneyin")
+    print(cursor.fetchall()
+def book():
+    print('Hoşgeldiniz,Kupon adı girin:')
+    bookname =input()
+    cursor = veritabani_sec.execute("SELECT * FROM book WHERE  name=? ;", (kuponname,))
+    print(cursor.fetchall())
+def kupon_add():
+    print('site adı')
+    print('Kupon adı:')
+    kuponname =input()
+    print('Yazar adı:')
+    w_name =input()
+   
+    cursor = veritabani_sec.execute('''INSERT INTO book (name,w_name,b_id,year,company) VALUES (?,?,null,?,?)''', (bookname,w_name,year,company))
+    print(cursor.fetchall())
+    baglanti.commit()
+    print("kupon eklendi")
+    oku = veritabani_sec.execute('SELECT * FROM book WHERE  name=? ;')   
+    book()
